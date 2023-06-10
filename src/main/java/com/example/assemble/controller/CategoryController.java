@@ -1,7 +1,6 @@
 package com.example.assemble.controller;
 
 import com.example.assemble.dto.CategoryDto;
-import com.example.assemble.dto.UserIncomeCategoryDto;
 import com.example.assemble.entity.Category;
 import com.example.assemble.entity.Transaction;
 import com.example.assemble.service.CategoryService;
@@ -51,9 +50,4 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{categoryId}/incomes")
-    public ResponseEntity<List<UserIncomeCategoryDto>> getAllIncomesByCategory(@PathVariable("id") Long categoryId){
-        List<List<Transaction>> incomeCategory = categoryService.findAllIncomesByCategory(categoryId);
-        return (ResponseEntity<List<UserIncomeCategoryDto>>) ResponseEntity.ok();
-    }
 }

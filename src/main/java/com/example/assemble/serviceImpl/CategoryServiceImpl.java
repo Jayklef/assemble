@@ -1,11 +1,9 @@
 package com.example.assemble.serviceImpl;
 
 import com.example.assemble.dto.CategoryDto;
-import com.example.assemble.dto.UserIncomeCategoryDto;
 import com.example.assemble.entity.Category;
 import com.example.assemble.entity.Transaction;
 import com.example.assemble.repository.CategoryRepository;
-import com.example.assemble.repository.IncomeRepository;
 import com.example.assemble.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -21,8 +18,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
-    private IncomeRepository incomeRepository;
     @Override
     public List<Category> findAllCategories() {
         return categoryRepository.findAll();
@@ -68,11 +63,5 @@ public class CategoryServiceImpl implements CategoryService {
         return null;
     }
 
-    private UserIncomeCategoryDto convertToUserIncomeCategoryDto(Category category){
-        UserIncomeCategoryDto userIncomeCategoryDto = new UserIncomeCategoryDto();
-        userIncomeCategoryDto.setCategoryId(category.getId());
-        userIncomeCategoryDto.setName(category.getName());
-        return userIncomeCategoryDto;
-    }
 }
 
