@@ -11,6 +11,4 @@ import lombok.NonNull;
 public class CategoryDto {
 
     private String name;
-    private String icon;
-    private String type;
 }

@@ -20,7 +20,5 @@ public class Category {
 
     @NonNull
     private String name;
-    private String icon;
-    private String type;
 
 }
