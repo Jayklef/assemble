@@ -20,12 +20,5 @@ public class Transaction {
     private LocalDate transactionDate;
     private String description;
     private Double amount;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    
 }
