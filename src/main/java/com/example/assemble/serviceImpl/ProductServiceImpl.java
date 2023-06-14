@@ -7,6 +7,8 @@ import com.example.assemble.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -22,5 +24,10 @@ public class ProductServiceImpl implements ProductService {
         product.setQuantity(product.getQuantity());
         product.setUnitPrice(productDto.getUnitPrice());
         return productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> getProducts(){
+        return productRepository.findAll();
     }
 }
