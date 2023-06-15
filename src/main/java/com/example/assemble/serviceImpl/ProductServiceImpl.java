@@ -48,5 +48,10 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
+    @Override
+    public Product updateProduct(Long id, Product product) {
+        return null;
+    }
+
 
 }
