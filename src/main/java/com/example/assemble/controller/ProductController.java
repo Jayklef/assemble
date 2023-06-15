@@ -33,6 +33,6 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable("id") Long id){
         Product product = productService.getProduct(id);
-        return new ResponseEntity<>(id, HttpStatus.FOUND);
+        return new ResponseEntity<>(product, HttpStatus.FOUND);
     }
 }
