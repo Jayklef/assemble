@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -50,7 +51,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Long id, Product product) {
-        return null;
+
+        Product productInDb = productRepository.findById(id).get();
+        if (Objects.nonNull(product.getName()))
+        return productRepository.save(productInDb);
     }
 
 
