@@ -51,6 +51,11 @@ public class CategoryServiceImpl implements CategoryService {
         !"".equalsIgnoreCase(category.getName())){
             categoryInDb.setName(category.getName());
         }
+
+        if (Objects.nonNull(category.getDescription()) &&
+        !"".equalsIgnoreCase(category.getDescription())){
+            categoryInDb.setDescription(category.getDescription());
+        }
         return categoryRepository.save(categoryInDb);
     }
 

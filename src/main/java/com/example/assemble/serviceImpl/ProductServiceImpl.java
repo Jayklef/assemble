@@ -53,7 +53,10 @@ public class ProductServiceImpl implements ProductService {
     public Product updateProduct(Long id, Product product) {
 
         Product productInDb = productRepository.findById(id).get();
-        if (Objects.nonNull(product.getName()))
+        if (Objects.nonNull(product.getName()) &&
+        !"".equalsIgnoreCase(productInDb.getName())){
+            productInDb.setName(product.getName());
+        }
         return productRepository.save(productInDb);
     }
 
