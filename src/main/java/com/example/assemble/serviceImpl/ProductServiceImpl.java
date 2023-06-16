@@ -7,6 +7,7 @@ import com.example.assemble.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,9 +55,29 @@ public class ProductServiceImpl implements ProductService {
 
         Product productInDb = productRepository.findById(id).get();
         if (Objects.nonNull(product.getName()) &&
-        !"".equalsIgnoreCase(productInDb.getName())){
+        !"".equalsIgnoreCase(product.getName())){
             productInDb.setName(product.getName());
         }
+
+        if (Objects.nonNull(product.getIsPerishable()) &&
+        !"".equalsIgnoreCase(product.getIsPerishable().toString())){
+            productInDb.setIsPerishable(product.getIsPerishable());
+        }
+
+        if (Objects.nonNull(product.getSupplyDate())){
+            productInDb.setSupplyDate(new Date());
+        }
+
+        if (Objects.nonNull(product.getQuantity()) &&
+        !"".equalsIgnoreCase(product.getQuantity().toString())){
+            productInDb.setQuantity(product.getQuantity());
+        }
+
+        if (Objects.nonNull(product.getUnitPrice()) &&
+        !"".equalsIgnoreCase(product.getUnitPrice().toString())){
+            productInDb.setUnitPrice(product.getUnitPrice());
+        }
+
         return productRepository.save(productInDb);
     }
 
