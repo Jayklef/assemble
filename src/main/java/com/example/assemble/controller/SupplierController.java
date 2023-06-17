@@ -27,4 +27,10 @@ public class SupplierController {
         List<Supplier> suppliers = supplierService.getSuppliers();
         return new ResponseEntity<>(suppliers, HttpStatus.OK);
     }
+
+    @GetMapping("/supplier/{id}")
+    public ResponseEntity<Supplier> getSupplier(@PathVariable("id") Long id){
+        Supplier supplier = supplierService.findSupplier(id);
+        return new ResponseEntity<>(supplier, HttpStatus.FOUND);
+    }
 }

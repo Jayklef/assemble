@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SupplierServiceImpl implements SupplierService {
@@ -29,5 +30,14 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public List<Supplier> getSuppliers() {
         return supplierRepository.findAll();
+    }
+
+    @Override
+    public Supplier findSupplier(Long id) {
+        Optional<Supplier> supplier = supplierRepository.findById(id);
+        if (!supplier.isPresent()){
+            throw new RuntimeException("Supplier with the Id of " + id + "not found");
+        }
+        return supplier.get();
     }
 }

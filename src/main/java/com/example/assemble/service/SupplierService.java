@@ -9,4 +9,6 @@ public interface SupplierService {
     Supplier createSupplier(SupplierDto supplierDto);
 
     List<Supplier> getSuppliers();
+
+    Supplier findSupplier(Long id);
 }
