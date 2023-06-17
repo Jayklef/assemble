@@ -7,6 +7,8 @@ import com.example.assemble.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SupplierServiceImpl implements SupplierService {
 
@@ -22,5 +24,10 @@ public class SupplierServiceImpl implements SupplierService {
         supplier.setEmail(supplierDto.getEmail());
 
         return supplierRepository.save(supplier);
+    }
+
+    @Override
+    public List<Supplier> getSuppliers() {
+        return supplierRepository.findAll();
     }
 }
