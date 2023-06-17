@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -39,5 +40,32 @@ public class SupplierServiceImpl implements SupplierService {
             throw new RuntimeException("Supplier with the Id of " + id + "not found");
         }
         return supplier.get();
+    }
+
+    @Override
+    public Supplier updateSupplier(Long id, SupplierDto supplierDto) {
+        Supplier supplierInDb = supplierRepository.findById(id).get();
+
+        if (Objects.nonNull(supplierDto.getName()) &&
+        !"".equalsIgnoreCase(supplierDto.getName())){
+            supplierInDb.setName(supplierDto.getName());
+        }
+
+        if (Objects.nonNull(supplierDto.getDescription()) &&
+        !"".equalsIgnoreCase(supplierDto.getDescription())){
+            supplierInDb.setDescription(supplierDto.getDescription());
+        }
+
+        if (Objects.nonNull(supplierDto.getAddress()) &&
+        !"".equalsIgnoreCase(supplierDto.getAddress())){
+            supplierInDb.setAddress(supplierDto.getAddress());
+        }
+
+        if (Objects.nonNull(supplierDto.getEmail()) &&
+        !"".equalsIgnoreCase(supplierDto.getEmail())){
+            supplierInDb.setEmail(supplierDto.getEmail());
+        }
+
+        return supplierRepository.save(supplierInDb);
     }
 }

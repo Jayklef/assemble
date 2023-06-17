@@ -11,4 +11,6 @@ public interface SupplierService {
     List<Supplier> getSuppliers();
 
     Supplier findSupplier(Long id);
+
+    Supplier updateSupplier(Long id, SupplierDto supplierDto);
 }

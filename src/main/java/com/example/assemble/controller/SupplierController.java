@@ -33,4 +33,11 @@ public class SupplierController {
         Supplier supplier = supplierService.findSupplier(id);
         return new ResponseEntity<>(supplier, HttpStatus.FOUND);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Supplier> updateSupplier(@PathVariable("id") Long id,
+                                                   @RequestBody SupplierDto supplierDto){
+        Supplier supplierToUpdate = supplierService.updateSupplier(id, supplierDto);
+        return new ResponseEntity<>(supplierToUpdate, HttpStatus.OK);
+    }
 }
