@@ -40,4 +40,10 @@ public class SupplierController {
         Supplier supplierToUpdate = supplierService.updateSupplier(id, supplierDto);
         return new ResponseEntity<>(supplierToUpdate, HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteSupplier(@PathVariable("id") Long id){
+        supplierService.deleteSupplier(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

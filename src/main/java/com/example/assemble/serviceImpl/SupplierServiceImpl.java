@@ -68,4 +68,10 @@ public class SupplierServiceImpl implements SupplierService {
 
         return supplierRepository.save(supplierInDb);
     }
+
+    @Override
+    public void deleteSupplier(Long id) {
+        Supplier supplier = findSupplier(id);
+        supplierRepository.delete(supplier);
+    }
 }
