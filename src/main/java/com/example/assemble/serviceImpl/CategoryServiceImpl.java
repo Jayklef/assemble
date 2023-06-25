@@ -70,5 +70,11 @@ public class CategoryServiceImpl implements CategoryService {
         return null;
     }
 
+    @Override
+    public Category findByName(String name) {
+
+        return categoryRepository.findByName(name);
+    }
+
 }
 

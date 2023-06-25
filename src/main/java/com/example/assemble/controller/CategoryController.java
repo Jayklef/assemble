@@ -50,4 +50,10 @@ public class CategoryController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/categories/name")
+    public ResponseEntity<Category> getCategoryByName(@RequestParam String name){
+        Category category = categoryService.findByName(name);
+        return new ResponseEntity<>(category, HttpStatus.FOUND);
+    }
+
 }

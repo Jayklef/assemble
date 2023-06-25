@@ -20,4 +20,6 @@ public interface CategoryService {
     void deleteCategoryById(Long id);
 
     List<List<Transaction>> findAllIncomesByCategory(Long categoryId);
+
+    Category findByName(String name);
 }
