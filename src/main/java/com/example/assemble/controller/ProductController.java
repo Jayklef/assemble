@@ -49,4 +49,10 @@ public class ProductController {
         return new ResponseEntity<>(prodToUpdate, HttpStatus.OK);
     }
 
+    @GetMapping("products/name")
+    public ResponseEntity<Product> getProductByName(@RequestParam String name){
+        Product product = productService.findByName(name);
+        return new ResponseEntity<>(product, HttpStatus.FOUND);
+    }
+
 }
