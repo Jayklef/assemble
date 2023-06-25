@@ -3,6 +3,7 @@ package com.example.assemble.serviceImpl;
 import com.example.assemble.dto.CategoryDto;
 import com.example.assemble.entity.Category;
 import com.example.assemble.entity.Transaction;
+import com.example.assemble.exception.ResourceNotFoundException;
 import com.example.assemble.repository.CategoryRepository;
 import com.example.assemble.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
 
         if (!optionalCategory.isPresent()){
-            throw new RuntimeException("Category with id " + id + " not found");
+            throw new ResourceNotFoundException("Category with id " + id + " not found");
         }
         return categoryRepository.findById(id).get();
     }

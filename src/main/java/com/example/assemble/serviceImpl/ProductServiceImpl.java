@@ -2,6 +2,7 @@ package com.example.assemble.serviceImpl;
 
 import com.example.assemble.dto.ProductDto;
 import com.example.assemble.entity.Product;
+import com.example.assemble.exception.ResourceNotFoundException;
 import com.example.assemble.repository.ProductRepository;
 import com.example.assemble.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
         Optional<Product> product = productRepository.findById(id);
 
         if (!product.isPresent()){
-            throw new RuntimeException("Product with id of" + id + " is not present");
+            throw new ResourceNotFoundException("Product with id of" + id + " is not present");
         }
         return product.get();
     }

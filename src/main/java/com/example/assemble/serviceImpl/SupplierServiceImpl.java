@@ -2,6 +2,7 @@ package com.example.assemble.serviceImpl;
 
 import com.example.assemble.dto.SupplierDto;
 import com.example.assemble.entity.Supplier;
+import com.example.assemble.exception.ResourceNotFoundException;
 import com.example.assemble.repository.SupplierRepository;
 import com.example.assemble.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class SupplierServiceImpl implements SupplierService {
     public Supplier findSupplier(Long id) {
         Optional<Supplier> supplier = supplierRepository.findById(id);
         if (!supplier.isPresent()){
-            throw new RuntimeException("Supplier with the Id of " + id + "not found");
+            throw new ResourceNotFoundException("Supplier with the Id of " + id + "not found");
         }
         return supplier.get();
     }

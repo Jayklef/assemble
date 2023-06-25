@@ -2,6 +2,7 @@ package com.example.assemble.serviceImpl;
 
 import com.example.assemble.dto.UserDto;
 import com.example.assemble.entity.User;
+import com.example.assemble.exception.ResourceNotFoundException;
 import com.example.assemble.repository.UserRepository;
 import com.example.assemble.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
         if (!user.isPresent()){
-            throw new RuntimeException("User with id of " + id +  "not found");
+            throw new ResourceNotFoundException("User with id of " + id +  "not found");
         }
         return user.get();
     }
