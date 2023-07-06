@@ -16,7 +16,7 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long supplierId;
     private String name;
     private String description;
     private String address;
