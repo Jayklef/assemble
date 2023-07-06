@@ -50,4 +50,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> GeneralizedException(Exception ex,
+                                                              WebRequest request){
+        ErrorResponse error = new ErrorResponse();
+        error.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        error.setMessage(ex.getMessage());
+        error.setTimestamp(new Date());
+
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
