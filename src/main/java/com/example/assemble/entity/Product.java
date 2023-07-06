@@ -24,4 +24,12 @@ public class Product {
     private Date supplyDate;
     private Boolean isPerishable;
     private Long quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id", nullable = false)
+    private Supplier supplier;
 }
