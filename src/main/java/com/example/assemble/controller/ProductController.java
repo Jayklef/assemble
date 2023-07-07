@@ -4,6 +4,7 @@ import com.example.assemble.dto.ProductDto;
 import com.example.assemble.entity.Product;
 import com.example.assemble.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -53,6 +54,12 @@ public class ProductController {
     public ResponseEntity<Product> getProductByName(@RequestParam String name){
         Product product = productService.findByName(name);
         return new ResponseEntity<>(product, HttpStatus.FOUND);
+    }
+
+    @GetMapping("products/paginationAndSorting/{pageNumber}/{pageSize}")
+    public Page<Product> getPagination(@PathVariable("pageNumber") Integer pageNumber,
+                                       @PathVariable("pageSize") Integer pageSize){
+        return productService.findProductPagination(pageNumber, pageSize);
     }
 
 }

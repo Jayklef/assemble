@@ -6,6 +6,9 @@ import com.example.assemble.exception.ResourceNotFoundException;
 import com.example.assemble.repository.ProductRepository;
 import com.example.assemble.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -85,6 +88,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findByName(String name) {
         return productRepository.findByName(name);
+    }
+
+    @Override
+    public Page<Product> findProductPagination(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return productRepository.findAll(pageable);
     }
 
 
