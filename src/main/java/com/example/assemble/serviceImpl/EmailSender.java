@@ -2,16 +2,19 @@ package com.example.assemble.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-public class EmailSenderService {
+public class EmailSender {
 
-    @Autowired
     private JavaMailSender mailSender;
+
+    public EmailSender(JavaMailSenderImpl mailSender) {
+        this.mailSender = mailSender;
+    }
 
     public void sendEmail(String recipient, String msgBody, String subject, String sender) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
@@ -24,5 +27,4 @@ public class EmailSenderService {
 
         mailSender.send(message);
     }
-
 }
