@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -91,10 +92,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findProductPagination(Integer pageNumber, Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+    public Page<Product> findProductPagination(Integer pageNumber, Integer pageSize, String sortProperty) {
+        Pageable pageable = null;
+        if (sortProperty == null)
+                pageable =
+                PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, "name");
+
+        else {
+            pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, sortProperty);
+        }
+
         return productRepository.findAll(pageable);
     }
-
-
+    
 }

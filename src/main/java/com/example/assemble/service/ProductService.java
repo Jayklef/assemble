@@ -3,7 +3,6 @@ package com.example.assemble.service;
 import com.example.assemble.dto.ProductDto;
 import com.example.assemble.entity.Product;
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -20,5 +19,5 @@ public interface ProductService {
 
     Product findByName(String name);
 
-    Page<Product> findProductPagination(Integer pageNumber, Integer pageSize);
+    Page<Product> findProductPagination(Integer pageNumber, Integer pageSize, String sortProperty);
 }

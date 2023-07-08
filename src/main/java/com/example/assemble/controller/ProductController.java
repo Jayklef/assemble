@@ -59,7 +59,14 @@ public class ProductController {
     @GetMapping("products/paginationAndSorting/{pageNumber}/{pageSize}")
     public Page<Product> getPagination(@PathVariable("pageNumber") Integer pageNumber,
                                        @PathVariable("pageSize") Integer pageSize){
-        return productService.findProductPagination(pageNumber, pageSize);
+        return productService.findProductPagination(pageNumber, pageSize, null);
+    }
+
+    @GetMapping("products/paginationAndSorting/{pageNumber}/{pageSize}/{sortProperty}")
+    public Page<Product> getPagination(@PathVariable("pageNumber") Integer pageNumber,
+                                       @PathVariable("pageSize") Integer pageSize,
+                                       @PathVariable("sortProperty") String sortProperty){
+        return productService.findProductPagination(pageNumber, pageSize, sortProperty);
     }
 
 }
