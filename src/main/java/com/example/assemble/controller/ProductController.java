@@ -56,7 +56,7 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.FOUND);
     }
 
-    @GetMapping("products/paginationAndSorting/{pageNumber}/{pageSize}")
+    @GetMapping("products/paginationAndSorting/{pageNumber}/{pageSizes}")
     public Page<Product> getPagination(@PathVariable("pageNumber") Integer pageNumber,
                                        @PathVariable("pageSize") Integer pageSize){
         return productService.findProductPagination(pageNumber, pageSize, null);
